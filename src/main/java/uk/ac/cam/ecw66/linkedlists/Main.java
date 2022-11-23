@@ -25,4 +25,5 @@ public class Main {
     list.addFirst(3);
     System.out.println(list);
   }
+
 }

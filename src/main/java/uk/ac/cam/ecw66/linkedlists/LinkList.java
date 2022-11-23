@@ -16,6 +16,8 @@
 
 package uk.ac.cam.ecw66.linkedlists;
 
+import java.util.NoSuchElementException;
+
 public class LinkList {
 
   private static class Node {
@@ -39,6 +41,24 @@ public class LinkList {
       }
       return value + "," + next;
     }
+
+    private int get(int i) {
+      if (i == 0) {
+        return value;
+      } else if (next == null) {
+        throw new NoSuchElementException();
+      } else {
+        return next.get(i - 1);
+      }
+    }
+
+    private int length() {
+      if (next == null) {
+        return 1;
+      } else {
+        return 1 + next.length();
+      }
+    }
   }
 
   private Node head;
@@ -55,8 +75,42 @@ public class LinkList {
     }
   }
 
+  public int removeFirst() {
+    if (head == null) {
+      throw new NoSuchElementException();
+    } else {
+      int temp = head.value;
+      head = head.next;
+      return temp;
+    }
+  }
+
   @Override
   public String toString() {
     return String.format("[%s]", head == null ? "" : head.toString());
+  }
+
+  public static LinkList create(int[] elements) {
+    LinkList ll = new LinkList();
+    for (int i = elements.length - 1; i >= 0; --i) {
+      ll.addFirst(elements[i]);
+    }
+    return ll;
+  }
+
+  public int get(int i) {
+    if (i < 0 || head == null) {
+      throw new NoSuchElementException();
+    } else {
+      return head.get(i);
+    }
+  }
+
+  public int length() {
+    if (head == null) {
+      return 0;
+    } else {
+      return head.length();
+    }
   }
 }

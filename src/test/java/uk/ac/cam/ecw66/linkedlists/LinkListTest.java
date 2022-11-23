@@ -17,10 +17,13 @@
 package uk.ac.cam.ecw66.linkedlists;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThrows;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import java.util.NoSuchElementException;
 
 @RunWith(JUnit4.class)
 public class LinkListTest {
@@ -62,5 +65,92 @@ public class LinkListTest {
 
     // ASSERT
     assertThat(value).isEqualTo("[2,1]");
+  }
+
+  @Test
+  public void linkListFromEmptyArr() {
+    //ARRANGE
+    //ACT
+    int[] is = new int[] {};
+    LinkList ll = LinkList.create(is);
+    String s = ll.toString();
+    //ASSERT
+    assertThat(s).isEqualTo("[]");
+  }
+
+  @Test
+  public void linkListFromNonEmptyArr() {
+    //ARRANGE
+    //ACT
+    int[] is = new int[] {1,2,3,4};
+    LinkList ll = LinkList.create(is);
+    String s = ll.toString();
+    //ASSERT
+    assertThat(s).isEqualTo("[1,2,3,4]");
+  }
+
+  @Test
+  public void removeFirstIsNull() {
+    //ARRANGE
+    LinkList ll = new LinkList();
+    //ACT
+    //ASSERT
+    assertThrows(NoSuchElementException.class,() -> ll.removeFirst());
+  }
+
+  @Test
+  public void removeFirstIsntNull() {
+    //ARRANGE
+    LinkList ll = LinkList.create(new int[] {1,2,3,4});
+    //ACT
+    int oldHead = ll.removeFirst();
+    //ASSERT
+    assertThat(oldHead).isEqualTo(1);
+    assertThat(ll.toString()).isEqualTo("[2,3,4]");
+  }
+
+  @Test
+  public void getOutOfBounds() {
+    //ARRANGE
+    LinkList empty = new LinkList();
+    LinkList ll = LinkList.create(new int[] {1,2,3,4});
+    //ACT
+    //ASSERT
+    assertThrows(NoSuchElementException.class, () -> ll.get(-1));
+    assertThrows(NoSuchElementException.class, () -> empty.get(0));
+    assertThrows(NoSuchElementException.class, () -> ll.get(8));
+
+  }
+
+  @Test
+  public void getInBounds() {
+    //ARRANGE
+    LinkList ll = LinkList.create(new int[] {1,2,3,4});
+    //ACT
+    int i1 = ll.get(0);
+    int i2 = ll.get(1);
+    int i3 = ll.get(2);
+    int i4 = ll.get(3);
+    //ASSERT
+    assertThat(i1).isEqualTo(1);
+    assertThat(i2).isEqualTo(2);
+    assertThat(i3).isEqualTo(3);
+    assertThat(i4).isEqualTo(4);
+
+  }
+
+  @Test
+  public void lengthTest() {
+    //ARRANGE
+    LinkList ll = LinkList.create(new int[] {1,2,3,4});
+    LinkList empty = new LinkList();
+
+    //ACT
+    int llLength = ll.length();
+    int emptyLength = empty.length();
+
+    //ASSERT
+    assertThat(llLength).isEqualTo(4);
+    assertThat(emptyLength).isEqualTo(0);
   }
 }
