@@ -165,7 +165,7 @@ public class ArrayedListTest {
         //ACT
         //ASSERT
         assertThrows(IndexOutOfBoundsException.class, () -> ll.set(7,-1));
-        assertThrows(IndexOutOfBoundsException.class, () -> emptyll.set(Math.signum(7.32f),0));
+        assertThrows(IndexOutOfBoundsException.class, () -> emptyll.set(Math.signum(7.32f),9));
         assertThrows(IndexOutOfBoundsException.class, () -> ll.set(343894389,8));
     }
 
