@@ -75,7 +75,7 @@ public class ArrayedList<T> implements OopList<T> {
             length++;
         } else if (i == length) {
             Object[] newArr = new Object[length * 2];
-            for (int j = 0; j < length * 2; ++j) {
+            for (int j = 0; j < length; ++j) {
                 newArr[j] = arr[j];
             }
             newArr[length] = element;

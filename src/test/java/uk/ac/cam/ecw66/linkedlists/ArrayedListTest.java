@@ -143,6 +143,33 @@ public class ArrayedListTest {
     }
 
     @Test
+    public void setInBounds() {
+        //ARRANGE
+        ArrayedList<Integer> ll = ArrayedList.create(new Integer[] {1,2,3,4});
+        //ACT
+        ll.set(0,0);
+        ll.set(5,4);
+        ll.set(6,5);
+        ll.set(7,6);
+        ll.set(8,7);
+        ll.set(9,8);
+        //ASSERT
+        assertThat(ll.toString()).isEqualTo("[0,2,3,4,5,6,7,8,9]");
+    }
+
+    @Test
+    public void setOutofBound() {
+        //ARRANGE
+        ArrayedList<Integer> ll = ArrayedList.create(new Integer[] {1,2,3,4});
+        ArrayedList<Float> emptyll = new ArrayedList<Float>();
+        //ACT
+        //ASSERT
+        assertThrows(IndexOutOfBoundsException.class, () -> ll.set(7,-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> emptyll.set(Math.signum(7.32f),0));
+        assertThrows(IndexOutOfBoundsException.class, () -> ll.set(343894389,8));
+    }
+
+    @Test
     public void lengthTest() {
         //ARRANGE
         ArrayedList<Integer> ll = ArrayedList.create(new Integer[] {1,2,3,4});
