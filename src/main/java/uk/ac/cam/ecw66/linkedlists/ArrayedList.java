@@ -63,7 +63,7 @@ public class ArrayedList<T> implements OopList<T> {
         if (0 <= i && i < length) {
             return (T) arr[i];
         } else {
-            throw new IndexOutOfBoundsException();
+            throw new NoSuchElementException();
         }
     }
 
