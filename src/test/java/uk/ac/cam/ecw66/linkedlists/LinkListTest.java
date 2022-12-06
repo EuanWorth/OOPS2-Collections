@@ -19,10 +19,13 @@ package uk.ac.cam.ecw66.linkedlists;
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertThrows;
 
+import com.google.common.truth.ComparableSubject;
+import jdk.jshell.spi.ExecutionControl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.util.Comparator;
 import java.util.NoSuchElementException;
 
 @RunWith(JUnit4.class)
@@ -43,7 +46,7 @@ public class LinkListTest {
   @Test
   public void linkList_toStringIsSingleItem_whenListContainsOneItem() {
     // ARRANGE
-    LinkList list = new LinkList();
+    LinkList<Integer> list = new LinkList<Integer>();
     list.addFirst(1);
 
     // ACT
@@ -56,7 +59,7 @@ public class LinkListTest {
   @Test
   public void linkList_toStringIsTwoThenOne_whenListHasOneThenTwoAdded() {
     // ARRANGE
-    LinkList list = new LinkList();
+    LinkList<Integer> list = new LinkList<Integer>();
     list.addFirst(1);
     list.addFirst(2);
 
@@ -71,8 +74,8 @@ public class LinkListTest {
   public void linkListFromEmptyArr() {
     //ARRANGE
     //ACT
-    int[] is = new int[] {};
-    LinkList ll = LinkList.create(is);
+    Integer[] is = new Integer[] {};
+    LinkList<Integer> ll = LinkList.create(is);
     String s = ll.toString();
     //ASSERT
     assertThat(s).isEqualTo("[]");
@@ -82,8 +85,8 @@ public class LinkListTest {
   public void linkListFromNonEmptyArr() {
     //ARRANGE
     //ACT
-    int[] is = new int[] {1,2,3,4};
-    LinkList ll = LinkList.create(is);
+    Integer[] is = new Integer[] {1,2,3,4};
+    LinkList<Integer> ll = LinkList.create(is);
     String s = ll.toString();
     //ASSERT
     assertThat(s).isEqualTo("[1,2,3,4]");
@@ -92,7 +95,7 @@ public class LinkListTest {
   @Test
   public void removeFirstIsNull() {
     //ARRANGE
-    LinkList ll = new LinkList();
+    LinkList<RuntimeException> ll = new LinkList();
     //ACT
     //ASSERT
     assertThrows(NoSuchElementException.class,() -> ll.removeFirst());
@@ -101,9 +104,9 @@ public class LinkListTest {
   @Test
   public void removeFirstIsntNull() {
     //ARRANGE
-    LinkList ll = LinkList.create(new int[] {1,2,3,4});
+    LinkList<Integer> ll = LinkList.create(new Integer[] {1,2,3,4});
     //ACT
-    int oldHead = ll.removeFirst();
+    Integer oldHead = ll.removeFirst();
     //ASSERT
     assertThat(oldHead).isEqualTo(1);
     assertThat(ll.toString()).isEqualTo("[2,3,4]");
@@ -112,8 +115,8 @@ public class LinkListTest {
   @Test
   public void getOutOfBounds() {
     //ARRANGE
-    LinkList empty = new LinkList();
-    LinkList ll = LinkList.create(new int[] {1,2,3,4});
+    LinkList<Integer> empty = new LinkList();
+    LinkList ll = LinkList.create(new Integer[] {1,2,3,4});
     //ACT
     //ASSERT
     assertThrows(NoSuchElementException.class, () -> ll.get(-1));
@@ -125,7 +128,7 @@ public class LinkListTest {
   @Test
   public void getInBounds() {
     //ARRANGE
-    LinkList ll = LinkList.create(new int[] {1,2,3,4});
+    LinkList<Integer> ll = LinkList.create(new Integer[] {1,2,3,4});
     //ACT
     int i1 = ll.get(0);
     int i2 = ll.get(1);
@@ -142,8 +145,8 @@ public class LinkListTest {
   @Test
   public void lengthTest() {
     //ARRANGE
-    LinkList ll = LinkList.create(new int[] {1,2,3,4});
-    LinkList empty = new LinkList();
+    LinkList<Integer> ll = LinkList.create(new Integer[] {1,2,3,4});
+    LinkList<ExecutionControl.ExecutionControlException> empty = new LinkList<ExecutionControl.ExecutionControlException>();
 
     //ACT
     int llLength = ll.length();

@@ -19,7 +19,7 @@ package uk.ac.cam.ecw66.linkedlists;
 public class Main {
 
   public static void main(String[] args) {
-    LinkList list = new LinkList();
+    LinkList<Integer> list = new LinkList<Integer>();
     list.addFirst(1);
     list.addFirst(2);
     list.addFirst(3);

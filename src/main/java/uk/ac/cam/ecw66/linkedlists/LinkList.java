@@ -18,18 +18,18 @@ package uk.ac.cam.ecw66.linkedlists;
 
 import java.util.NoSuchElementException;
 
-public class LinkList {
+public class LinkList<T> {
 
-  private static class Node {
-    private int value;
-    private Node next;
+  private static class Node<T> {
+    private T value;
+    private Node<T> next;
 
-    public Node(int value, Node next) {
+    public Node(T value, Node next) {
       this.value = value;
       this.next = next;
     }
 
-    Node(int value) {
+    Node(T value) {
       this.value = value;
       this.next = null;
     }
@@ -42,7 +42,7 @@ public class LinkList {
       return value + "," + next;
     }
 
-    private int get(int i) {
+    private T get(int i) {
       if (i == 0) {
         return value;
       } else if (next == null) {
@@ -61,13 +61,13 @@ public class LinkList {
     }
   }
 
-  private Node head;
+  private Node<T> head;
 
   LinkList() {
     this.head = null;
   }
 
-  void addFirst(int element) {
+  void addFirst(T element) {
     if (head == null) {
       head = new Node(element);
     } else {
@@ -75,11 +75,11 @@ public class LinkList {
     }
   }
 
-  public int removeFirst() {
+  public T removeFirst() {
     if (head == null) {
       throw new NoSuchElementException();
     } else {
-      int temp = head.value;
+      T temp = head.value;
       head = head.next;
       return temp;
     }
@@ -90,7 +90,7 @@ public class LinkList {
     return String.format("[%s]", head == null ? "" : head.toString());
   }
 
-  public static LinkList create(int[] elements) {
+  public static <G> LinkList<G> create(G[] elements) {
     LinkList ll = new LinkList();
     for (int i = elements.length - 1; i >= 0; --i) {
       ll.addFirst(elements[i]);
@@ -98,7 +98,7 @@ public class LinkList {
     return ll;
   }
 
-  public int get(int i) {
+  public T get(int i) {
     if (i < 0 || head == null) {
       throw new NoSuchElementException();
     } else {
