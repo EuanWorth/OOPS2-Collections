@@ -72,7 +72,7 @@ public class ArrayedList<T> implements OopList<T> {
             arr[i] = element;
         } else if (i == length && arr.length > length) {
             arr[i] = element;
-            length ++;
+            length++;
         } else if (i == length) {
             Object[] newArr = new Object[length * 2];
             for (int j = 0; j < length * 2; ++j) {
@@ -86,13 +86,18 @@ public class ArrayedList<T> implements OopList<T> {
         }
     }
 
-    public static <G> ArrayedList<G> create (G[] elements) {
-        ArrayedList<G> arrayedList = new ArrayedList<G>(elements.length * 2);
-        for (int i = 0; i < elements.length; ++i) {
-            arrayedList.set(elements[i], i);
+    public static <G> ArrayedList<G> create(G[] elements) {
+        if (elements.length != 0) {
+            ArrayedList<G> arrayedList = new ArrayedList<G>(elements.length * 2);
+            for (int i = 0; i < elements.length; ++i) {
+                arrayedList.set(elements[i], i);
+            }
+            return arrayedList;
+        } else {
+            return new ArrayedList<G>();
         }
-        return arrayedList;
     }
+
     @Override
     public int length() {
         return length;
@@ -100,11 +105,14 @@ public class ArrayedList<T> implements OopList<T> {
 
     @Override
     public String toString() {
-        StringBuilder outputString = new StringBuilder("{");
-        for (int i = 0; i < length - 1; ++i) {
-            outputString.append(String.valueOf(arr[i])).append(",");
+        StringBuilder outputString = new StringBuilder("[");
+        if (length != 0) {
+            for (int i = 0; i < length - 1; ++i) {
+                outputString.append(String.valueOf(arr[i])).append(",");
+            }
+            outputString.append(String.valueOf(arr[length - 1]));
         }
-        outputString.append(String.valueOf(arr[length - 1])).append("]");
+        outputString.append("]");
         return outputString.toString();
     }
 }
