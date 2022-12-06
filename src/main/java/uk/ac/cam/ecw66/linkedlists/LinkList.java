@@ -18,7 +18,7 @@ package uk.ac.cam.ecw66.linkedlists;
 
 import java.util.NoSuchElementException;
 
-public class LinkList<T> {
+public class LinkList<T> implements OopList<T> {
 
   private static class Node<T> {
     private T value;
@@ -67,7 +67,7 @@ public class LinkList<T> {
     this.head = null;
   }
 
-  void addFirst(T element) {
+  public void addFirst(T element) {
     if (head == null) {
       head = new Node(element);
     } else {
