@@ -2,6 +2,7 @@ package uk.ac.cam.ecw66.linkedlists;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class ArrayedList<T> implements OopList<T> {
@@ -95,5 +96,15 @@ public class ArrayedList<T> implements OopList<T> {
     @Override
     public int length() {
         return length;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder outputString = new StringBuilder("{");
+        for (int i = 0; i < length - 1; ++i) {
+            outputString.append(String.valueOf(arr[i])).append(",");
+        }
+        outputString.append(String.valueOf(arr[length - 1])).append("]");
+        return outputString.toString();
     }
 }
