@@ -113,4 +113,20 @@ public class LinkList<T> implements OopList<T> {
       return head.length();
     }
   }
+
+  @Override
+  public void reverse() {
+    if (head != null) {
+      Node<T> previous = null;
+      Node<T> current = null;
+      Node<T> next = head;
+      while (next != null) {
+        previous = current;
+        current = next;
+        next = current.next;
+        current.next = previous;
+      }
+      head = current;
+    }
+  }
 }

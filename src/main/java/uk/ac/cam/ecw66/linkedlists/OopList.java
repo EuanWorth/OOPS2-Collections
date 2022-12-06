@@ -14,4 +14,6 @@ public interface OopList<T> {
     public String toString();
 
     public int length();
+
+    public void reverse();
 }

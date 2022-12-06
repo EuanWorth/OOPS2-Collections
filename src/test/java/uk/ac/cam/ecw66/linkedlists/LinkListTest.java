@@ -156,4 +156,17 @@ public class LinkListTest {
     assertThat(llLength).isEqualTo(4);
     assertThat(emptyLength).isEqualTo(0);
   }
+
+  @Test
+  public void reverseTest() {
+    //ARRANGE
+    LinkList<Integer> ll = LinkList.create(new Integer[] {1,2,3,4});
+    LinkList<ExecutionControl.ExecutionControlException> empty = new LinkList<ExecutionControl.ExecutionControlException>();
+    //ACT
+    ll.reverse();
+    empty.reverse();
+    //ASSERT
+    assertThat(ll.toString()).isEqualTo("[4,3,2,1]");
+    assertThat(empty.toString()).isEqualTo("[]");
+  }
 }

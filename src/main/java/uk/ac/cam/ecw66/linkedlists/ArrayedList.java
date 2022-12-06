@@ -115,4 +115,13 @@ public class ArrayedList<T> implements OopList<T> {
         outputString.append("]");
         return outputString.toString();
     }
+
+    @Override
+    public void reverse() {
+        Object[] newArr = new Object[arr.length];
+        for (int i = 0; i < length; ++i) {
+            newArr[length - 1 - i] = arr[i];
+        }
+        arr = newArr;
+    }
 }

@@ -183,5 +183,18 @@ public class ArrayedListTest {
         assertThat(llLength).isEqualTo(4);
         assertThat(emptyLength).isEqualTo(0);
     }
+
+    @Test
+    public void reverseTest() {
+        //ARRANGE
+        ArrayedList<Integer> ll = ArrayedList.create(new Integer[] {1,2,3,4});
+        ArrayedList<ExecutionControl.ExecutionControlException> empty = new ArrayedList<ExecutionControl.ExecutionControlException>();
+        //ACT
+        ll.reverse();
+        empty.reverse();
+        //ASSERT
+        assertThat(ll.toString()).isEqualTo("[4,3,2,1]");
+        assertThat(empty.toString()).isEqualTo("[]");
+    }
 }
 
