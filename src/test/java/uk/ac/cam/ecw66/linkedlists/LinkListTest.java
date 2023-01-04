@@ -95,7 +95,7 @@ public class LinkListTest {
   @Test
   public void removeFirstIsNull() {
     //ARRANGE
-    LinkList<RuntimeException> ll = new LinkList();
+    LinkList<Float> ll = new LinkList();
     //ACT
     //ASSERT
     assertThrows(NoSuchElementException.class,() -> ll.removeFirst());
@@ -146,7 +146,7 @@ public class LinkListTest {
   public void lengthTest() {
     //ARRANGE
     LinkList<Integer> ll = LinkList.create(new Integer[] {1,2,3,4});
-    LinkList<ExecutionControl.ExecutionControlException> empty = new LinkList<ExecutionControl.ExecutionControlException>();
+    LinkList<Float> empty = new LinkList<Float>();
 
     //ACT
     int llLength = ll.length();
@@ -161,7 +161,7 @@ public class LinkListTest {
   public void reverseTest() {
     //ARRANGE
     LinkList<Integer> ll = LinkList.create(new Integer[] {1,2,3,4});
-    LinkList<ExecutionControl.ExecutionControlException> empty = new LinkList<ExecutionControl.ExecutionControlException>();
+    LinkList<Float> empty = new LinkList<Float>();
     //ACT
     ll.reverse();
     empty.reverse();

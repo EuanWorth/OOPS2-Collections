@@ -30,7 +30,7 @@ public class LinkQueueTest {
     public void popOutOfRange() {
         //ARRANGE
         LinkQueue<Integer> lq = LinkQueue.create(new Integer[]{1});
-        LinkQueue<Comparator<Comparator<Comparator<Float>>>> empty = new LinkQueue<Comparator<Comparator<Comparator<Float>>>>();
+        LinkQueue<Float> empty = new LinkQueue<Float>();
         //ACT
         Integer l1 = lq.pop();
         //ASSERT
@@ -53,7 +53,7 @@ public class LinkQueueTest {
     @Test
     public void peekOutOfRange() {
         //ARRANGE
-        LinkQueue<Comparator<Comparator<Comparator<Float>>>> empty = new LinkQueue<Comparator<Comparator<Comparator<Float>>>>();
+        LinkQueue<Float> empty = new LinkQueue<Float>();
         //ACT
         //ASSERT
         assertThrows(NoSuchElementException.class, empty::peek);

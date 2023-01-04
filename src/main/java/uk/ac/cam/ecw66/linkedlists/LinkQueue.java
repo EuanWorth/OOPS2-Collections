@@ -2,7 +2,7 @@ package uk.ac.cam.ecw66.linkedlists;
 
 import java.util.NoSuchElementException;
 
-public class LinkQueue<T> implements OopQueue<T> {
+public class LinkQueue<T extends Comparable<T>> implements OopQueue<T> {
     LinkList<T> ForwardList;
     LinkList<T> ReverseList;
 
@@ -28,7 +28,7 @@ public class LinkQueue<T> implements OopQueue<T> {
     @Override
     public T pop() {
         normalise();
-        T head = ForwardList.removeFirst();
+        T head = (T)ForwardList.removeFirst();
         if (head == null) {
             throw new NoSuchElementException();
         } else {
@@ -40,7 +40,7 @@ public class LinkQueue<T> implements OopQueue<T> {
     @Override
     public T peek() {
         normalise();
-        T head = ForwardList.get(0);
+        T head = (T)ForwardList.get(0);
         if (head == null) {
             throw new NoSuchElementException();
         } else {
@@ -48,7 +48,7 @@ public class LinkQueue<T> implements OopQueue<T> {
         }
     }
 
-    public static <G> LinkQueue<G> create(G[] elements) {
+    public static <G extends Comparable<G>> LinkQueue<G> create(G[] elements) {
         LinkQueue<G> newQueue = new LinkQueue<G>();
         newQueue.ForwardList = LinkList.create(elements);
         return newQueue;

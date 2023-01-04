@@ -18,12 +18,12 @@ package uk.ac.cam.ecw66.linkedlists;
 
 public class Main {
 
+
+
   public static void main(String[] args) {
-    LinkList<Integer> list = new LinkList<Integer>();
-    list.addFirst(1);
-    list.addFirst(2);
-    list.addFirst(3);
-    System.out.println(list);
+    LinkList<Integer> myList = LinkList.create(new Integer[]{4,7,5,43,5,675,4, 34, 4,7, 3, 6,4, 1, 3,6 , 3243, -3, 3});
+    myList.reorderLowHigh();
+    System.out.println(myList);
   }
 
 }

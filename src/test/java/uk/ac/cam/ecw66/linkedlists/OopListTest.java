@@ -96,7 +96,7 @@ public class OopListTest {
     @Test
     public void removeFirstIsNull() {
         //ARRANGE
-        OopList<RuntimeException> ll = new LinkList<RuntimeException>();
+        OopList<Float> ll = new LinkList<Float>();
         //ACT
         //ASSERT
         assertThrows(NoSuchElementException.class,() -> ll.removeFirst());
@@ -116,7 +116,7 @@ public class OopListTest {
     @Test
     public void getOutOfBounds() {
         //ARRANGE
-        OopList<Comparator<LinkList<Comparator<LinkList<Comparator<ArrayedList<Comparator<OopList<FilterFactory>>>>>>>>> empty = new LinkList<Comparator<LinkList<Comparator<LinkList<Comparator<ArrayedList<Comparator<OopList<FilterFactory>>>>>>>>>();
+        OopList<Float> empty = new LinkList<Float>();
         OopList ll = ArrayedList.create(new Integer[] {1,2,3,4});
         //ACT
         //ASSERT
@@ -147,7 +147,7 @@ public class OopListTest {
     public void lengthTest() {
         //ARRANGE
         OopList<Integer> ll = LinkList.create(new Integer[] {1,2,3,4});
-        OopList<ExecutionControl.ExecutionControlException> empty = new LinkList<ExecutionControl.ExecutionControlException>();
+        OopList<Float> empty = new LinkList<Float>();
 
         //ACT
         int llLength = ll.length();
