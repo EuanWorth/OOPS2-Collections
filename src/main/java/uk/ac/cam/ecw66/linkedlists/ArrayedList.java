@@ -1,8 +1,6 @@
 package uk.ac.cam.ecw66.linkedlists;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.NoSuchElementException;
 
 public class ArrayedList<T> implements OopList<T> {
